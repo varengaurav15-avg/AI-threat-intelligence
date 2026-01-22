@@ -1,0 +1,394 @@
+:root {
+    --primary-color: #6366f1;
+    /* Indigo 500 */
+    --primary-hover: #4f46e5;
+    /* Indigo 600 */
+    --bg-color: #f8fafc;
+    /* Slate 50 */
+    --surface-color: #ffffff;
+    --text-primary: #1e293b;
+    /* Slate 800 */
+    --text-secondary: #64748b;
+    /* Slate 500 */
+    --border-color: #e2e8f0;
+    /* Slate 200 */
+    --danger-color: #ef4444;
+    --success-color: #22c55e;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --font-sans: 'Inter', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    /* Indigo 400 */
+    --primary-hover: #6366f1;
+    --bg-color: #0f172a;
+    /* Slate 900 */
+    --surface-color: #1e293b;
+    /* Slate 800 */
+    --text-primary: #f1f5f9;
+    /* Slate 100 */
+    --text-secondary: #94a3b8;
+    /* Slate 400 */
+    --border-color: #334155;
+    /* Slate 700 */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    position: relative;
+    padding-bottom: 100px;
+    /* Space for fixed bottom input */
+}
+
+/* Header */
+header {
+    margin-bottom: 2rem;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle:hover {
+    background-color: var(--border-color);
+}
+
+.icon {
+    display: none;
+}
+
+[data-theme="light"] .icon.moon {
+    display: block;
+}
+
+[data-theme="dark"] .icon.sun {
+    display: block;
+}
+
+/* Date & Progress */
+.date-display {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.progress-container {
+    background-color: var(--surface-color);
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.progress-bar-bg {
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 99px;
+}
+
+/* Streak */
+.streak-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #ffedd5;
+    /* Orange 100 */
+    color: #c2410c;
+    /* Orange 700 */
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .streak-container {
+    background-color: #431407;
+    /* Orange 950 */
+    color: #fdba74;
+    /* Orange 300 */
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.task-item {
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item:active {
+    transform: scale(0.99);
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: white;
+}
+
+.task-item.completed .checkbox {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.task-text {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.task-item:hover .delete-btn,
+.task-item:focus-within .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background-color: #fee2e2;
+    /* Red 100 */
+    color: var(--danger-color);
+}
+
+[data-theme="dark"] .delete-btn:hover {
+    background-color: #450a0a;
+    /* Red 950 */
+}
+
+/* Add Task Form (Bottom Fixed) */
+.add-task-container {
+    padding: 1.5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, var(--bg-color) 80%, transparent);
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+#add-task-form {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    gap: 0.75rem;
+    background-color: var(--surface-color);
+    padding: 0.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+#task-input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    outline: none;
+}
+
+#add-task-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+#add-task-form button:hover {
+    background-color: var(--primary-hover);
+}
+
+#add-task-form button:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 1rem;
+    }
+
+    .delete-btn {
+        opacity: 1;
+        /* Always show delete on mobile */
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 3rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+/* Edit Inputs */
+.edit-input {
+    flex-grow: 1;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+}
+
+/* Confetti */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
