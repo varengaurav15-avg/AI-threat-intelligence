@@ -7,3 +7,4 @@ venv/
 chroma_db/
 dist/
 dist-installers/
+.env.example
