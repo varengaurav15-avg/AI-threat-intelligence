@@ -36,10 +36,8 @@ function createWindow() {
     backgroundColor: '#060c14'
   })
 
-  const isDev = process.env.NODE_ENV === 'development'
-  isDev
-    ? mainWindow.loadURL('http://localhost:5173')
-    : mainWindow.loadFile(path.join(__dirname, '../frontend/dist/index.html'))
+  // Always use dev server for now (dist build not created yet)
+  mainWindow.loadURL('http://localhost:5174')
 
   // Tray icon — safe load with fallback
   const trayIconPath = path.join(__dirname, 'assets', 'tray-icon.png')

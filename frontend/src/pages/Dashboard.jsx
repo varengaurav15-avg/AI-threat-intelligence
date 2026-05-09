@@ -495,7 +495,7 @@ export default function Dashboard() {
                               </p>
                               <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
                                 <button style={{ background:"rgba(239,68,68,0.08)", border:"1px solid rgba(239,68,68,0.2)", color:"#ef4444", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>🚨 Escalate</button>
-                                <button onClick={()=>api.resolveTheat(t.id).then(()=>qc.invalidateQueries(["threats"]))}
+                                <button onClick={()=>api.resolveThreat(t.id).then(()=>qc.invalidateQueries(["threats"]))}
                                   style={{ background:"rgba(34,197,94,0.08)", border:"1px solid rgba(34,197,94,0.2)", color:"#22c55e", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>✓ Resolve</button>
                                 <button style={{ background:"rgba(56,189,248,0.08)", border:"1px solid rgba(56,189,248,0.2)", color:"#38bdf8", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>🔗 View in NVD</button>
                                 {t.origin==="ENDPOINT" && <button style={{ background:"rgba(244,114,182,0.08)", border:"1px solid rgba(244,114,182,0.2)", color:"#f472b6", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>🖥 Sandbox Report</button>}
@@ -649,7 +649,7 @@ export default function Dashboard() {
                             <div style={{ display:"flex", gap:8 }}>
                               <button style={{ background:"rgba(244,114,182,0.08)", border:"1px solid rgba(244,114,182,0.2)", color:"#f472b6", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>🧪 Sandbox Report</button>
                               <button style={{ background:"rgba(167,139,250,0.08)", border:"1px solid rgba(167,139,250,0.2)", color:"#a78bfa", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>📋 Full Playbook</button>
-                              <button onClick={()=>api.resolveTheat(t.id).then(()=>qc.invalidateQueries(["incidents"]))}
+                              <button onClick={()=>api.resolveThreat(t.id).then(()=>qc.invalidateQueries(["incidents"]))}
                                 style={{ background:"rgba(34,197,94,0.08)", border:"1px solid rgba(34,197,94,0.2)", color:"#22c55e", padding:"7px 14px", borderRadius:7, fontSize:12, cursor:"pointer", fontFamily:"inherit" }}>✓ Mark Resolved</button>
                             </div>
                           </div>

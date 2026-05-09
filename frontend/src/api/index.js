@@ -11,5 +11,5 @@ export const api = {
   getBrief:     ()   => axios.get(`${BASE}/api/brief/today`),
   getConfig:    ()   => axios.get(`${BASE}/api/config/permissions`),
   saveConfig:   (d)  => axios.post(`${BASE}/api/config/permissions`, d),
-  resolveTheat: (id) => axios.patch(`${BASE}/api/threats/${id}/resolve`),
+  resolveThreat: (id) => axios.patch(`${BASE}/api/threats/${id}/resolve`),
 }

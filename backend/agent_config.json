@@ -1,0 +1,21 @@
+{
+  "process": true,
+  "network": true,
+  "filesystem": true,
+  "logs": true,
+  "folders": [
+    "Documents",
+    "Desktop",
+    "Downloads"
+  ],
+  "exclusions": [],
+  "responseMode": "aggressive",
+  "notifications": {
+    "desktop": true,
+    "tray": true,
+    "sound": false
+  },
+  "aiEnabled": true,
+  "apiKey": "",
+  "startOnBoot": true
+}
